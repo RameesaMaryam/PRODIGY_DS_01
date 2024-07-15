@@ -13,7 +13,9 @@ To run the script, you will need the following Python libraries:
 - matplotlib
 
 You can install these libraries using pip:
+```
 pip install pandas matplotlib
+```
 
 ## Script Description
 
@@ -34,64 +36,6 @@ The script performs the following steps:
 
 3. **Run the Script:**
    Execute the script to generate the bar chart.
-   
-   ```python
-   import pandas as pd
-   import matplotlib.pyplot as plt
-
-   # Load the data from the uploaded CSV file
-   file_path = 'population.csv'
-   population_data = pd.read_csv(file_path, skiprows=4)
-
-   # Display the first few rows of the dataframe to understand its structure
-   print("First few rows of the dataset:")
-   print(population_data.head())
-
-   # Display the columns to check the latest year column
-   print("Columns in the dataset:")
-   print(population_data.columns)
-
-   # Filter the data for the latest year available
-   latest_year = population_data.columns[-2]  # Ensure you are selecting the correct column
-   print(f"Latest year column: {latest_year}")
-
-   # Filter data for the latest year
-   population_latest = population_data[['Country Name', latest_year]].dropna()
-
-   # Rename the columns for easier access
-   population_latest.columns = ['Country', 'Population']
-
-   # Convert Population to numeric (if not already)
-   population_latest['Population'] = pd.to_numeric(population_latest['Population'], errors='coerce')
-
-   # Check if the Population column has been converted correctly
-   print("Data types after conversion:")
-   print(population_latest.dtypes)
-
-   # Display the first few rows of the latest population data to check the values
-   print("First few rows of the latest population data:")
-   print(population_latest.head())
-
-   # Sort the data by population in descending order
-   population_latest = population_latest.sort_values(by='Population', ascending=False)
-
-   # Select the top 10 countries by population for the bar chart
-   top_10_population = population_latest.head(10)
-   print("Top 10 countries by population:")
-   print(top_10_population)
-
-   # Create the bar chart
-   plt.figure(figsize=(10, 6))
-   plt.bar(top_10_population['Country'], top_10_population['Population'], color='lightblue')
-   plt.xlabel('Country')
-   plt.ylabel('Population')
-   plt.title('Top 10 Countries by Population')
-   plt.xticks(rotation=45)
-   plt.tight_layout()
-
-   # Show the plot
-   plt.show()
-   ```
 
 ## Output
 
